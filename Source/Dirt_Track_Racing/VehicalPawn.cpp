@@ -3,7 +3,9 @@
 
 #include "VehicalPawn.h"
 #include "EnhancedInputComponent.h"
+#include "InputActionValue.h"
 #include "ChaosWheeledVehicleMovementComponent.h"
+
 
 // Sets default values
 AVehicalPawn::AVehicalPawn()
@@ -20,7 +22,7 @@ void AVehicalPawn::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void AVehicalPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AVehicalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
@@ -28,29 +30,22 @@ void AVehicalPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	{
 		// steering 
 		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Steering);
-		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Completed, this, &AVehicalPawn::Steering);
 
 		// throttle 
 		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Throttle);
-		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Completed, this, &AVehicalPawn::Throttle);
 
 		// break 
 		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Brake);
-		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Started, this, &AVehicalPawn::StartBrake);
-		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Completed, this, &AVehicalPawn::StopBrake);
 
 		// handbrake 
-		EnhancedInputComponent->BindAction(HandbrakeAction, ETriggerEvent::Started, this, &AVehicalPawn::StartHandbrake);
-		EnhancedInputComponent->BindAction(HandbrakeAction, ETriggerEvent::Completed, this, &AVehicalPawn::StopHandbrake);
-
-		// look around 
-		EnhancedInputComponent->BindAction(LookAroundAction, ETriggerEvent::Triggered, this, &AVehicalPawn::LookAround);
-
-		// toggle camera 
-		EnhancedInputComponent->BindAction(ToggleCameraAction, ETriggerEvent::Triggered, this, &AVehicalPawn::ToggleCamera);
-
-		// reset the vehicle 
-		EnhancedInputComponent->BindAction(ResetVehicleAction, ETriggerEvent::Triggered, this, &AVehicalPawn::ResetVehicle);
+		// EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Started, this, &AVehicalPawn::StartHandbrake);
+		// EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Completed, this, &AVehicalPawn::StopHandbrake);
+		// 
+		// // look around 
+		// EnhancedInputComponent->BindAction(CameraLookAction, ETriggerEvent::Triggered, this, &AVehicalPawn::LookAround);
+		// 
+		// // reset the vehicle 
+		// EnhancedInputComponent->BindAction(ResetAction, ETriggerEvent::Triggered, this, &AVehicalPawn::ResetVehicle);
 	}
 
 }
