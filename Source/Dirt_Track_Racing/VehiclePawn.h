@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "WheeledVehiclePawn.h"
-#include "VehicalPawn.generated.h"
+#include "VehiclePawn.generated.h"
 
 class UInputAction;
 class UChaosWheeledVehicleMovementComponent;
 struct FInputActionValue;
 
 UCLASS(abstract)
-class AVehicalPawn : public AWheeledVehiclePawn
+class AVehiclePawn : public AWheeledVehiclePawn
 {
 	GENERATED_BODY()
 
@@ -38,7 +38,7 @@ protected:
 
 public:
 	// Sets default values for this pawn's properties
-	AVehicalPawn();
+	AVehiclePawn();
 
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 

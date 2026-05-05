@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "VehicalPawn.h"
+#include "VehiclePawn.h"
 #include "OffroadPawn.generated.h"
 
 UCLASS()
-class DIRT_TRACK_RACING_API AOffroadPawn : public AVehicalPawn
+class DIRT_TRACK_RACING_API AOffroadPawn : public AVehiclePawn
 {
 	GENERATED_BODY()
 

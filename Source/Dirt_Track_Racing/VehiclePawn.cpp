@@ -1,41 +1,41 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "VehicalPawn.h"
+#include "VehiclePawn.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
 #include "ChaosWheeledVehicleMovementComponent.h"
 
 
 // Sets default values
-AVehicalPawn::AVehicalPawn()
+AVehiclePawn::AVehiclePawn()
 {
 	// get the Chaos Wheeled movement component
 	ChaosVehicleMovement = CastChecked<UChaosWheeledVehicleMovementComponent>(GetVehicleMovement());
 }
 
 // Called every frame
-void AVehicalPawn::Tick(float DeltaTime)
+void AVehiclePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
 // Called to bind functionality to input
-void AVehicalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AVehiclePawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		// steering 
-		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Steering);
+		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Steering);
 
 		// throttle 
-		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Throttle);
+		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Throttle);
 
 		// break 
-		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehicalPawn::Brake);
+		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Brake);
 
 		// handbrake 
 		// EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Started, this, &AVehicalPawn::StartHandbrake);
@@ -50,7 +50,7 @@ void AVehicalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 
 }
 
-void AVehicalPawn::Steering(const FInputActionValue& Value)
+void AVehiclePawn::Steering(const FInputActionValue& Value)
 {
 	// get the input magnitude for steering
 	float SteeringValue = Value.Get<float>();
@@ -59,7 +59,7 @@ void AVehicalPawn::Steering(const FInputActionValue& Value)
 	ChaosVehicleMovement->SetSteeringInput(SteeringValue);
 }
 
-void AVehicalPawn::Throttle(const FInputActionValue& Value)
+void AVehiclePawn::Throttle(const FInputActionValue& Value)
 {
 	// get the input magnitude for the throttle
 	float ThrottleValue = Value.Get<float>();
@@ -68,7 +68,7 @@ void AVehicalPawn::Throttle(const FInputActionValue& Value)
 	ChaosVehicleMovement->SetThrottleInput(ThrottleValue);
 }
 
-void AVehicalPawn::Brake(const FInputActionValue& Value)
+void AVehiclePawn::Brake(const FInputActionValue& Value)
 {
 	// get the input magnitude for the brakes
 	float BreakValue = Value.Get<float>();
