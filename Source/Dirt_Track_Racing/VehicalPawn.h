@@ -3,47 +3,63 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "WheeledVehiclePawn.h"
 #include "VehicalPawn.generated.h"
 
 class UInputAction;
 class UChaosWheeledVehicleMovementComponent;
+struct FInputActionValue;
 
-UCLASS()
-class DIRT_TRACK_RACING_API AVehicalPawn : public APawn
+UCLASS(abstract)
+class AVehicalPawn : public AWheeledVehiclePawn
 {
 	GENERATED_BODY()
 
-
+	TObjectPtr<UChaosWheeledVehicleMovementComponent> ChaosVehicleMovement;
 protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Sterring;
+	UInputAction* SteeringAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Throttle;
+	UInputAction* ThrottleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Brake;
+	UInputAction* BrakeAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* HandBrake;
+	UInputAction* HandBrakeAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* CameraLook;
+	UInputAction* CameraLookAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Reset;
+	UInputAction* ResetAction;
 
 public:
 	// Sets default values for this pawn's properties
 	AVehicalPawn();
 
-public:	
-	// Called every frame
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+protected:
+
+	/** Handles steering input */
+	void Steering(const FInputActionValue& Value);
+
+	/** Handles throttle input */
+	void Throttle(const FInputActionValue& Value);
+
+	/** Handles brake input */
+	void Brake(const FInputActionValue& Value);
+
+public:	
+	// Called every frame
+	
+
+	/** Returns the cast Chaos Vehicle Movement subobject */
+	FORCEINLINE const TObjectPtr<UChaosWheeledVehicleMovementComponent>& GetChaosVehicleMovement() const { return ChaosVehicleMovement; }
 
 };
