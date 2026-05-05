@@ -4,17 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "dtrGameModeBase.generated.h"
+#include "RaceGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DIRT_TRACK_RACING_API ADTRGameModeBase : public AGameModeBase
+class DIRT_TRACK_RACING_API ARaceGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-
-public:
-	AdtrGameMode();
 	
 };
