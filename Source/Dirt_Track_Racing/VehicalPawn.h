@@ -18,22 +18,22 @@ class DIRT_TRACK_RACING_API AVehicalPawn : public APawn
 protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Sterring;
+	UInputAction* SteeringAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Throttle;
+	UInputAction* ThrottleAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Brake;
+	UInputAction* BrakeAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* HandBrake;
+	UInputAction* HandBrakeAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* CameraLook;
+	UInputAction* CameraLookAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* Reset;
+	UInputAction* ResetAction;
 
 public:
 	// Sets default values for this pawn's properties
