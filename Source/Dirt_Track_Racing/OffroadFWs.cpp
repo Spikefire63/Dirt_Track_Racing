@@ -20,7 +20,12 @@ UOffroadFWs::UOffroadFWs() {
 	MaxHandBrakeTorque = 4000.0f;
 
 	//suspension
-	//will add if it causes problems
+	SuspensionMaxRaise = 20.0f;
+	SuspensionMaxDrop = 20.0f;
+	WheelLoadRatio = 1.0f;
+	SpringRate = 100.0f;
+	SpringPreload = 100.0f;
+	SweepShape = ESweepShape::Shapecast;
 
 
 }

@@ -51,6 +51,7 @@ void AVehiclePawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 	{
 		// steering 
 		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Steering);
+		EnhancedInputComponent->BindAction(SteeringAction, ETriggerEvent::Completed, this, &AVehiclePawn::Steering);
 
 		// throttle 
 		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Throttle);
