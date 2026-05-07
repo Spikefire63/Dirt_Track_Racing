@@ -3,3 +3,8 @@
 
 #include "VehiclePlayerController.h"
 
+void AVehiclePlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+}
+

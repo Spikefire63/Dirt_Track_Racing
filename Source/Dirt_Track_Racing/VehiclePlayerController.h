@@ -10,8 +10,9 @@
  * 
  */
 UCLASS()
-class DIRT_TRACK_RACING_API AVehiclePlayerController : public APlayerController
+class AVehiclePlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+protected
 };
