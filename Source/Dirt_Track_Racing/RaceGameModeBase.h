@@ -10,8 +10,11 @@
  * 
  */
 UCLASS()
-class DIRT_TRACK_RACING_API ARaceGameModeBase : public AGameModeBase
+class ARaceGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+	ARaceGameModeBase();
 	
 };

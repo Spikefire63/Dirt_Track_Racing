@@ -2,4 +2,9 @@
 
 
 #include "RaceGameModeBase.h"
+#include "VehiclePlayerController.h"
 
+ARaceGameModeBase::ARaceGameModeBase()
+{
+	PlayerControllerClass = AVehiclePlayerController::StaticClass();
+}
