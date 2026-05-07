@@ -66,6 +66,8 @@ void AVehiclePawn::Throttle(const FInputActionValue& Value)
 
 	// add the input
 	ChaosVehicleMovement->SetThrottleInput(ThrottleValue);
+
+	UE_LOG(LogTemp, Warning, TEXT("THROTTLE FIRED"));
 }
 
 void AVehiclePawn::Brake(const FInputActionValue& Value)
