@@ -2,9 +2,19 @@
 
 
 #include "VehiclePlayerController.h"
+#include "VehiclePawn.h"
 
 void AVehiclePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 }
+
+void AVehiclePlayerController::OnPossess(APawn* InPawn)
+{
+	Super::OnPossess(InPawn);
+
+	Vehicle = CastChecked<AVehiclePawn>(InPawn);
+}
+
+
 

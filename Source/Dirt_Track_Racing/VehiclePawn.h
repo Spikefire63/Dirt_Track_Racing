@@ -46,13 +46,13 @@ public:
 
 protected:
 
-	/** Handles steering input */
+	// sterring input
 	void Steering(const FInputActionValue& Value);
 
-	/** Handles throttle input */
+	// throttle input
 	void Throttle(const FInputActionValue& Value);
 
-	/** Handles brake input */
+	// break input
 	void Brake(const FInputActionValue& Value);
 
 public:	
