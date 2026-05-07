@@ -4,12 +4,33 @@
 #include "VehiclePawn.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 #include "ChaosWheeledVehicleMovementComponent.h"
 
 
 // Sets default values
 AVehiclePawn::AVehiclePawn()
 {
+	// construct the back camera boom
+	BackSpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Back Spring Arm"));
+	BackSpringArm->SetupAttachment(GetMesh());
+	BackSpringArm->TargetArmLength = 650.0f;
+	BackSpringArm->SocketOffset.Z = 150.0f;
+	BackSpringArm->bDoCollisionTest = false;
+	BackSpringArm->bInheritPitch = false;
+	BackSpringArm->bInheritRoll = false;
+	BackSpringArm->bEnableCameraRotationLag = true;
+	BackSpringArm->CameraRotationLagSpeed = 2.0f;
+	BackSpringArm->CameraLagMaxDistance = 50.0f;
+
+	BackCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("Back Camera"));
+	BackCamera->SetupAttachment(BackSpringArm);
+
+	//setting physics
+	GetMesh()->SetSimulatePhysics(true);
+	GetMesh()->SetCollisionProfileName(FName("Vehicle"));
+
 	// get the Chaos Wheeled movement component
 	ChaosVehicleMovement = CastChecked<UChaosWheeledVehicleMovementComponent>(GetVehicleMovement());
 }
@@ -33,7 +54,7 @@ void AVehiclePawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 
 		// throttle 
 		EnhancedInputComponent->BindAction(ThrottleAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Throttle);
-
+		
 		// break 
 		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Brake);
 
@@ -78,4 +99,3 @@ void AVehiclePawn::Brake(const FInputActionValue& Value)
 	// add the input
 	ChaosVehicleMovement->SetBrakeInput(BreakValue);
 }
-
