@@ -59,14 +59,7 @@ void AVehiclePawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 		// break 
 		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Brake);
 
-		// handbrake 
-		// EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Started, this, &AVehicalPawn::StartHandbrake);
-		// EnhancedInputComponent->BindAction(HandBrakeAction, ETriggerEvent::Completed, this, &AVehicalPawn::StopHandbrake);
-		// 
-		// // look around 
-		// EnhancedInputComponent->BindAction(CameraLookAction, ETriggerEvent::Triggered, this, &AVehicalPawn::LookAround);
-		// 
-		// // reset the vehicle 
+		// reset the vehicle 
 		// EnhancedInputComponent->BindAction(ResetAction, ETriggerEvent::Triggered, this, &AVehicalPawn::ResetVehicle);
 	}
 
