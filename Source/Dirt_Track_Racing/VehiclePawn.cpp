@@ -60,7 +60,8 @@ void AVehiclePawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 		EnhancedInputComponent->BindAction(BrakeAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Brake);
 
 		// reset the vehicle 
-		// EnhancedInputComponent->BindAction(ResetAction, ETriggerEvent::Triggered, this, &AVehicalPawn::ResetVehicle);
+		// was not able to fully break this down to make it work. will do a later time
+		//EnhancedInputComponent->BindAction(ResetAction, ETriggerEvent::Triggered, this, &AVehiclePawn::Reset);
 	}
 
 }
@@ -82,7 +83,8 @@ void AVehiclePawn::Throttle(const FInputActionValue& Value)
 	// add the input
 	ChaosVehicleMovement->SetThrottleInput(ThrottleValue);
 
-	UE_LOG(LogTemp, Warning, TEXT("THROTTLE FIRED"));
+	// was texting because vehicle was not moving at one point.
+	//UE_LOG(LogTemp, Warning, TEXT("THROTTLE FIRED"));
 }
 
 void AVehiclePawn::Brake(const FInputActionValue& Value)
@@ -93,3 +95,14 @@ void AVehiclePawn::Brake(const FInputActionValue& Value)
 	// add the input
 	ChaosVehicleMovement->SetBrakeInput(BreakValue);
 }
+
+/*
+void AVehiclePawn::Reset(const FInputActionValue& Value)
+{
+	// get the input magnitude for the brakes
+	float ResetValue = Value.Get<float>();
+
+	// add the input
+	ChaosVehicleMovement->ResetVehicleState();
+}
+*/

@@ -39,12 +39,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* HandBrakeAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
-	UInputAction* CameraLookAction;
-
+	
+	/*
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* ResetAction;
+	*/
 
 public:
 	// Sets default values for this pawn's properties
@@ -64,6 +63,8 @@ protected:
 
 	// break input
 	void Brake(const FInputActionValue& Value);
+
+	//void Reset(const FInputActionValue& Value);
 	
 public:	
 	

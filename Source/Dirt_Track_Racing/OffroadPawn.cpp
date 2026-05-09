@@ -6,24 +6,30 @@
 #include "OffroadFWs.h"
 #include "ChaosWheeledVehicleMovementComponent.h"
 
+//Creating the Vehicle pawn itself
 AOffroadPawn::AOffroadPawn()
 {
+	//creating the vehicles chassis
 	Chassis = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Chassis"));
 	Chassis->SetupAttachment(GetMesh());
 
+	//creating the FL tire
 	TireFrontLeft = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Tire Front Left"));
 	TireFrontLeft->SetupAttachment(GetMesh(), FName("VisWheel_FL"));
 	TireFrontLeft->SetCollisionProfileName(FName("NoCollision"));
 
+	//creating the FR tire
 	TireFrontRight = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Tire Front Right"));
 	TireFrontRight->SetupAttachment(GetMesh(), FName("VisWheel_FR"));
 	TireFrontRight->SetCollisionProfileName(FName("NoCollision"));
 	TireFrontRight->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 
+	//creating the RL tire
 	TireRearLeft = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Tire Rear Left"));
 	TireRearLeft->SetupAttachment(GetMesh(), FName("VisWheel_BL"));
 	TireRearLeft->SetCollisionProfileName(FName("NoCollision"));
 
+	//creating the RR tire
 	TireRearRight = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Tire Rear Right"));
 	TireRearRight->SetupAttachment(GetMesh(), FName("VisWheel_BR"));
 	TireRearRight->SetCollisionProfileName(FName("NoCollision"));
@@ -77,4 +83,17 @@ AOffroadPawn::AOffroadPawn()
 	GetChaosVehicleMovement()->SteeringSetup.AngleRatio = 0.7f;
 }
 
+//activate speed boost
+void AOffroadPawn::ActivateSpeedBoost()
+{
+		GetChaosVehicleMovement()->EngineSetup.MaxTorque = 2000.0f;
+		GetChaosVehicleMovement()->EngineSetup.MaxRPM = 20000.0f;
+}
+
+//deactivate speed boost
+void AOffroadPawn::DeactivateSpeedBoost()
+{
+		GetChaosVehicleMovement()->EngineSetup.MaxTorque = 600.0f;
+		GetChaosVehicleMovement()->EngineSetup.MaxRPM = 7000.0f;
+}
 
